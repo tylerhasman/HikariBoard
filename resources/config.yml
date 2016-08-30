@@ -1,0 +1,20 @@
+#HikariBoard Config
+#Not much to config since this is aimed towards being used as a dependency for
+#other plugins
+
+#Update rate of scoreboard in ticks
+#You may want to adjust this depending on the use case of the scoreboard
+#For example, if you use it to display a counter in seconds
+#You could set it to 20 because 20 ticks is 1 second
+#Setting this higher will 'reduce' tps overhead, however, it is already very low
+#I recommend this is set to 1 since then it will update every other tick
+#that is more than enough
+
+#TL;DR Set low for constantly updating values, set high for larger intervals between updates
+#I DO NOT recommend higher than 20 to 40
+update_rate: 1
+
+#Only disable if conflicting with another plugin
+#This will give all players who join their own scoreboard
+#Otherwise everyone will share scoreboards and this will create issues
+force_unique_scoreboard: true
