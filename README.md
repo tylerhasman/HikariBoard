@@ -1,5 +1,11 @@
+
+<img src="http://thumbnail.image.rakuten.co.jp/@0_mall/t-time/cabinet/kanji2009a/hikari.gif" width="15%" height="15%" />
 # HikariBoard
 The fastest, most lightweight scoreboard api for Spigot 1.10.2
+
+### Why the name?
+
+Hikari is Japanese for Light! Light is fast and so is HikariBoard. 
 
 ### Examples
 
