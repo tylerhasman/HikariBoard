@@ -1,11 +1,8 @@
 package me.bowser123467.hikariboard;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -21,7 +18,7 @@ public class ScoreboardEvent extends PlayerEvent {
 	private String scoreboardName;
 	private String header, footer;
 	
-	protected ScoreboardEvent(Player player, String scoreboardName) {
+	public ScoreboardEvent(Player player, String scoreboardName) {
 		super(player);
 		this.scoreboardName = scoreboardName;
 		lines = new ArrayList<>();
@@ -60,16 +57,14 @@ public class ScoreboardEvent extends PlayerEvent {
 	
 	public void writeLine(String text){
 		if(lines.size() >= ChatColor.values().length){
-			System.out.println("Cannot write anymore lines, exceeds "+ChatColor.values().length);
-			return;
+			throw new IllegalStateException("Cannot write anymore lines.");
 		}
 		lines.add(new ScoreboardLine(text));
 	}
 	
 	public void insertLine(int position, String text){
 		if(lines.size() >= ChatColor.values().length){
-			System.out.println("Cannot insert anymore lines, exceeds "+ChatColor.values().length);
-			return;
+			throw new IllegalStateException("Cannot write anymore lines.");
 		}
 		
 		lines.add(position, new ScoreboardLine(text));

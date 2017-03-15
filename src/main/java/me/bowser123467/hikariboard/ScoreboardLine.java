@@ -6,7 +6,10 @@ public class ScoreboardLine {
 
 	private String text;
 	
-	protected ScoreboardLine(String text) {
+	private int cutPosition;
+	
+	public ScoreboardLine(String text) {
+		cutPosition = 16;
 		setText(text);
 	}
 	
@@ -22,16 +25,27 @@ public class ScoreboardLine {
 
 	private void setText(String text) {
 		if(text.length() > 32){
-			throw new IllegalArgumentException("id must be less than 33 characters long.");
+			throw new IllegalArgumentException("text must be less than 33 characters long.");
 		}
 		this.text = text;
+		if(text.length() > 16){
+			String prefix = getPrefix();
+			if(prefix.endsWith(String.valueOf(ChatColor.COLOR_CHAR))){
+				cutPosition = 15;
+				if(getSuffix().length() > 16){
+					throw new IllegalArgumentException("text must be less than 32 characters long. This is because you have a color character in the middle.");
+				}
+			}else{
+				cutPosition = 16;
+			}
+		}
 	}
 	
 	public String getPrefix(){
 		if(text.length() <= 16){
 			return text;
 		}
-		return text.substring(0, 16);
+		return text.substring(0, cutPosition);
 	}
 	
 	public String getPrefixFinalColor(){
@@ -96,7 +110,8 @@ public class ScoreboardLine {
 		if(text.length() <= 16){
 			return "";
 		}
-		return text.substring(16);
+		
+		return text.substring(cutPosition);
 	}
 	
 	public String getText() {
