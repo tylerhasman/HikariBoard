@@ -25,7 +25,7 @@ public class ScoreboardLine {
 
 	private void setText(String text) {
 		if(text.length() > 32){
-			throw new IllegalArgumentException("text must be less than 33 characters long.");
+			text = text.substring(0, 32);
 		}
 		this.text = text;
 		if(text.length() > 16){
@@ -111,7 +111,13 @@ public class ScoreboardLine {
 			return "";
 		}
 		
-		return text.substring(cutPosition);
+		String suffix = text.substring(cutPosition);
+		
+		if(suffix.length() > 16){
+			return suffix.substring(0, 16);
+		}
+		
+		return suffix;
 	}
 	
 	public String getText() {
