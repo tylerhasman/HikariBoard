@@ -8,7 +8,7 @@ public class ScoreboardLine {
 	
 	private int cutPosition;
 	
-	public ScoreboardLine(String text) {
+	protected ScoreboardLine(String text) {
 		cutPosition = 16;
 		setText(text);
 	}
