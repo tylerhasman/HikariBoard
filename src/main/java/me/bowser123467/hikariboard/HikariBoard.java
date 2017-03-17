@@ -26,6 +26,8 @@ public class HikariBoard extends JavaPlugin implements Listener {
 			saveDefaultConfig();
 		}
 		
+		Bukkit.getPluginManager().registerEvents(this, this);
+		
 		Bukkit.getScheduler().runTaskTimer(this, man, 0, updateRate);
 		
 		ConsoleCommandSender sender = Bukkit.getConsoleSender();
@@ -39,7 +41,7 @@ public class HikariBoard extends JavaPlugin implements Listener {
 		
 	}
 	
-	@EventHandler(priority=EventPriority.MONITOR)
+	@EventHandler
 	public void onJoin(PlayerJoinEvent event){
 		Player pl = event.getPlayer();
 		
