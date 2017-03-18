@@ -2,6 +2,7 @@ package me.bowser123467.hikariboard;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.bukkit.ChatColor;
@@ -21,7 +22,7 @@ public class ScoreboardEvent extends PlayerEvent {
 	public ScoreboardEvent(Player player, String scoreboardName) {
 		super(player);
 		this.scoreboardName = scoreboardName;
-		lines = new ArrayList<>();
+		lines = new LinkedList<>();
 		header = "";
 		footer = "";
 	}

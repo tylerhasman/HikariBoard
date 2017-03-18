@@ -2,6 +2,7 @@ package me.bowser123467.hikariboard;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -13,7 +14,7 @@ import org.bukkit.scoreboard.Team;
 public class ScoreboardManager implements Runnable {
 	
 	private static final String OBJECTIVE_ID = "objective";
-
+	
 	@Override
 	public void run() {
 		for(Player player : Bukkit.getOnlinePlayers()){
@@ -36,7 +37,9 @@ public class ScoreboardManager implements Runnable {
 		
 		Bukkit.getPluginManager().callEvent(event);
 		
-		obj.setDisplayName(event.getScoreboardName());
+		if(!obj.getDisplayName().equals(event.getScoreboardName())){
+			obj.setDisplayName(event.getScoreboardName());
+		}
 		
 		if(event.getLines().size() > 0){
 			if(!event.getHeader().isEmpty())
@@ -62,8 +65,16 @@ public class ScoreboardManager implements Runnable {
 			
 			ScoreboardLine line = event.getLine(i);
 			
-			team.setPrefix(line.getPrefix());
-			team.setSuffix(line.getSuffix());
+			String prefix = line.getPrefix();
+			String suffix = line.getSuffix();
+			
+			if(!team.getPrefix().equals(prefix)){
+				team.setPrefix(prefix);
+			}
+			
+			if(!team.getSuffix().equals(suffix)){
+				team.setSuffix(line.getSuffix());
+			}
 			
 			String entry = ChatColor.values()[i]+line.getPrefixFinalColor();
 			
@@ -95,7 +106,7 @@ public class ScoreboardManager implements Runnable {
 				});
 			}
 		}
-				
+		
 	}
 	
 }
