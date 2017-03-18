@@ -48,6 +48,9 @@ public class ScoreboardEvent extends PlayerEvent {
 	}
 	
 	public void setScoreboardName(String scoreboardName) {
+		if(scoreboardName.length() > 32){
+			scoreboardName = scoreboardName.substring(0, 32);
+		}
 		this.scoreboardName = scoreboardName;
 	}
 	
