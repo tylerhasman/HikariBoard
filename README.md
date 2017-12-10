@@ -27,7 +27,7 @@ public void onScoreboardUpdate(ScoreboardEvent event){
   //Write some lines to the scoreboard
   //Note: No 'id' is necessary, unlike many scoreboad plugins HikariBoard operates a little differently
   event.writeLine("Your Name");
-  event.writeLint(player.getName());
+  event.writeLine(player.getName());
   
 }
 
